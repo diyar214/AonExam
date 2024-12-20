@@ -3,12 +3,14 @@ class ProductController : Controller
 {
     private readonly List<Product> products = new List<Product>();
 
+    [HttpGet]
     public IActionResult CreateProject()
     {
         products.Add(new Product { Id = 1, Name = "Product 1", Price = 10 });
         return Ok(products);
     }
 
+    [HttpPost]
     public IActionResult GetProductById(int id){
         var product = products.FirstOrDefault(p => p.Id == id);
         if(product == null){
